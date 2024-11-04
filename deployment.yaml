@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaibhav-python-app
+  labels:
+    app: vaibhav-python-app
+spec:
+  replicas: 3  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: vaibhav-python-app
+  template:
+    metadata:
+      labels:
+        app: vaibhav-python-app
+    spec:
+      containers:
+      - name: vaibhav-python-app
+        image: 038462757595.dkr.ecr.us-east-2.amazonaws.com/vaibhav-python-app:latest
+        ports:
+        - containerPort: 80  # Change this to your app's port
+        env:  # Add environment variables if needed
+        - name: EXAMPLE_ENV_VAR
+          value: "example_value"
